@@ -1,4 +1,5 @@
-<div class="overflow-y-auto content-start flex-wrap py-16 px-4 overflow-hidden lg:px-96 bg-gray-50">
+<!-- <div class="overflow-y-auto py-16 px-4 lg:px-96 bg-gray-50"> -->
+<div class="overflow-auto h-screen py-16 px-4 lg:px-96 bg-gray-50">
     <webapp-calendars-list [calendars]="calendars$ | async">
         (selected)="selectCalendar($event)"
         (updated)="updateCalendar($event)"

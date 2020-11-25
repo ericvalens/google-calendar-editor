@@ -34,6 +34,48 @@ export class CalendarsService {
       description: 'desc',
       nextEvent: new Date('2020-12-15'),
     },
+    {
+      id: '6',
+      name: 'GENTLE YOGA',
+      description: 'desc',
+      nextEvent: new Date('2020-12-17'),
+    },
+    {
+      id: '7',
+      name: 'POWER YOGA',
+      description: 'desc',
+      nextEvent: new Date('2020-12-18'),
+    },
+    {
+      id: '8',
+      name: 'BODYPUMP',
+      description: 'desc',
+      nextEvent: new Date('2020-12-19'),
+    },
+    {
+      id: '9',
+      name: 'AQUA FIT',
+      description: 'desc',
+      nextEvent: new Date('2020-12-20'),
+    },
+    {
+      id: '10',
+      name: 'STRENGTH',
+      description: 'desc',
+      nextEvent: new Date('2020-12-21'),
+    },
+    {
+      id: '11',
+      name: 'CARDIO BLAST',
+      description: 'desc',
+      nextEvent: new Date('2020-12-21'),
+    },
+    {
+      id: '12',
+      name: 'BASKETBALL',
+      description: 'desc',
+      nextEvent: new Date('2020-12-22'),
+    },
   ];
 
   findAll() {
