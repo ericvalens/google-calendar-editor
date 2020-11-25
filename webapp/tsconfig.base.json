@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/*": ["apps/client/src/environments/*"],
       "@webapp/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@webapp/core-data": ["libs/core-data/src/index.ts"],
       "@webapp/core-state": ["libs/core-state/src/index.ts"]

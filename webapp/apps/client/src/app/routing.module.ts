@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { CalendarsComponent } from './calendars/calendars.component';
+import { LogsComponent } from './logs/logs.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '', component: SettingsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/' },
+  { path: 'home', component: HomeComponent },
+  { path: 'calendar', component: CalendarsComponent },
+  { path: 'logs', component: LogsComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: '**', redirectTo: '/calendar' },
 ];
 
 @NgModule({

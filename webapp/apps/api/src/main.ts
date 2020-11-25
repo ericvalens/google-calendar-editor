@@ -8,7 +8,7 @@ const configureSwagger = (app) => {
   const options = new DocumentBuilder()
     .setTitle('Google Calendar Editor API')
     .setDescription('REST API for google calendar')
-    .setVersion('1.0')
+    .setVersion('1.0.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);

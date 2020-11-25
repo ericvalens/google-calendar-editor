@@ -1,0 +1,10 @@
+<div class="overflow-y-auto content-start flex-wrap py-16 px-4 overflow-hidden lg:px-96 bg-gray-50">
+    <webapp-calendars-list [calendars]="calendars$ | async">
+        (selected)="selectCalendar($event)"
+        (updated)="updateCalendar($event)"
+    </webapp-calendars-list>
+    <!-- <webapp-calendars-detail [calendar]="selectedCalendar"
+        (update)="updateCalendar($event)"
+        (cancelled)="resetForm()">
+    </webapp-calendars-detail> -->
+</div>

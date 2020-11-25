@@ -1,0 +1,58 @@
+{
+  "widgets": [
+    {
+      "id": "1",
+      "name": "TOTAL BODY CIRCUIT",
+      "description": "desc",
+      "nextEvent": "12/7/2020"
+    },
+    {
+      "id": "2",
+      "name": "ZUMBA",
+      "description": "desc",
+      "nextEvent": "12/8/2020"
+    },
+    {
+      "id": "3",
+      "name": "SILVERSNEAKERS",
+      "description": "desc",
+      "nextEvent": "12/8/2020"
+    },
+    {
+      "id": "4",
+      "name": "CYCLE",
+      "description": "desc",
+      "nextEvent": "12/14/2020"
+    },
+    {
+      "id": "5",
+      "name": "BODYPUMP",
+      "description": "desc",
+      "nextEvent": "12/15/2020"
+    },
+    {
+      "id": "6",
+      "name": "SILVERSNEAKERS BOOM",
+      "description": "desc",
+      "nextEvent": "12/21/2020"
+    },
+    {
+      "id": "7",
+      "name": "TAI CHI",
+      "description": "desc",
+      "nextEvent": "12/21/2020"
+    },
+    {
+      "id": "8",
+      "name": "INTERVAL TRAINING",
+      "description": "desc",
+      "nextEvent": "12/24/2020"
+    },
+    {
+      "id": "9",
+      "name": "YOGA",
+      "description": "desc",
+      "nextEvent": "12/25/2020"
+    }
+  ]
+}
