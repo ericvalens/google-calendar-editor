@@ -1,11 +1,6 @@
-<!-- <div class="overflow-y-auto py-16 px-4 lg:px-96 bg-gray-50"> -->
-<div class="overflow-auto h-screen py-16 px-4 lg:px-96 bg-gray-50">
+<div class="flex justify-center overflow-y-auto h-screen py-16 bg-gray-50">
     <webapp-calendars-list [calendars]="calendars$ | async">
         (selected)="selectCalendar($event)"
         (updated)="updateCalendar($event)"
     </webapp-calendars-list>
-    <!-- <webapp-calendars-detail [calendar]="selectedCalendar"
-        (update)="updateCalendar($event)"
-        (cancelled)="resetForm()">
-    </webapp-calendars-detail> -->
 </div>
