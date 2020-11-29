@@ -1,1 +1,87 @@
-<p>calendars-detail works!</p>
+<div class="h-screen overflow-y-auto flex justify-center py-16 bg-gray-50">
+    <form class="space-y-8 divide-y divide-gray-200">
+        <div class="space-y-8 divide-y divide-gray-200">
+            <div>
+                <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Calendar Name: calendar-name
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500">
+                        This information will be displayed publicly so be careful what you share.
+                    </p>
+                </div>
+                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div class="sm:col-span-5">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Search Text
+                        </label>
+                        <div class="mt-1">
+                            <input id="searchText" type="text"
+                                placeholder="Registration will open 72 hours before class start time. Class size is "
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-5">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Replace Text
+                        </label>
+                        <div class="mt-1">
+                            <input type="text" placeholder="Spots:"
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">
+                            How far out should events be updated to open them for registration?
+                        </label>
+                        <div class="mt-1">
+                            <input type="text" placeholder="72"
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
+                        <select id="country"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>Minute(s)</option>
+                            <option>Hour(s)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">
+                            How often should we update calendar?
+                        </label>
+                        <div class="mt-1">
+                            <input type="text" placeholder="1"
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
+                        <select id="country"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>Minute(s)</option>
+                            <option>Hour(s)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5">
+            <div class="flex justify-end">
+                <button type="button"
+                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Cancel
+                </button>
+                <button type="submit"
+                    class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <div class="fixed">
+        </div>
+    </div>
+</div>

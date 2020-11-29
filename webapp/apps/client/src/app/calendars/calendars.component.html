@@ -1,6 +1,10 @@
-<div class="flex justify-center overflow-y-auto h-screen py-16 bg-gray-50">
-    <webapp-calendars-list [calendars]="calendars$ | async">
-        (selected)="selectCalendar($event)"
-        (updated)="updateCalendar($event)"
-    </webapp-calendars-list>
+<div class="h-screen overflow-y-auto">
+    <div class="flex justify-center py-16 bg-gray-50">
+        <webapp-calendars-list [calendars]="calendars$ | async">
+        </webapp-calendars-list>
+    </div>
+    <div>
+        <div class="fixed">
+        </div>
+    </div>
 </div>

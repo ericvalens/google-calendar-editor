@@ -9,11 +9,14 @@ import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'calendar', component: CalendarsComponent },
-  { path: 'detail/:id', component: CalendarsDetailComponent },
+  {
+    path: 'calendars',
+    component: CalendarsComponent,
+    children: [{ path: 'calendar/:id', component: CalendarsDetailComponent }],
+  },
   { path: 'logs', component: LogsComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: '**', redirectTo: '/calendar' },
+  { path: '**', redirectTo: '/calendars' },
 ];
 
 @NgModule({

@@ -17,7 +17,6 @@ const emptyCalendar: Calendar = {
 })
 export class CalendarsComponent implements OnInit {
   calendars$: Observable<Calendar[]>;
-  selectedCalendar: Calendar;
 
   constructor(private calendarService: CalendarService) {}
 
@@ -27,22 +26,11 @@ export class CalendarsComponent implements OnInit {
 
   reset() {
     this.loadCalendars();
-    this.selectCalendar(null);
   }
 
-  resetForm() {
-    this.selectedCalendar = emptyCalendar;
-  }
-
-  selectCalendar(calendar: Calendar) {
-    this.selectedCalendar = calendar;
-  }
+  resetForm() {}
 
   loadCalendars() {
     this.calendars$ = this.calendarService.all();
-  }
-
-  updateCalendar(calendar: Calendar) {
-    this.calendarService.update(calendar).subscribe((result) => this.reset());
   }
 }
