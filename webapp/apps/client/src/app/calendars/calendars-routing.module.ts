@@ -7,7 +7,7 @@ import { CalendarsDetailComponent } from './calendars-detail/calendars-detail.co
 
 const routes: Routes = [
   {
-    path: 'calendars',
+    path: 'calendar',
     component: CalendarsComponent,
     children: [
       {
@@ -16,7 +16,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'calendar',
+        path: ':id',
         component: CalendarsDetailComponent,
       },
     ],

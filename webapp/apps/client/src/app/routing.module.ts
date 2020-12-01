@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'logs', component: LogsComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: '**', redirectTo: '/calendars' },
+  { path: '**', redirectTo: '/calendar' },
 ];
 
 @NgModule({
