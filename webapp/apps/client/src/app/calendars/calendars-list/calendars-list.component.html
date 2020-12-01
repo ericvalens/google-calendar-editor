@@ -1,40 +1,40 @@
-<div class="h-screen overflow-y-auto">
-    <div class="flex justify-center py-16 bg-gray-50">
-        <ul class="grid grid-cols-3 gap-12">
-            <li *ngFor="let calendar of calendars$ | async"
-                class="w-96 col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 transform motion-reduce:transform-none hover:-translate-y-0 hover:scale-105 transition ease-in-out duration-300">
-                <div class="flex-1 flex flex-col p-8">
-                    <h3 class="mt-6 text-gray-900 text-sm font-medium">Calendar Name: {{ calendar.name }}</h3>
-                    <dl class="mt-1 flex-grow flex flex-col justify-between">
-                        <dt class="sr-only">Title</dt>
-                        <dd class="text-gray-500 text-sm">Next Event: {{ calendar.nextEvent | date }} </dd>
-                        <dt class="sr-only">Role</dt>
-                        <dd class="mt-3">
-                            <span
-                                class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full">Admin</span>
-                        </dd>
-                    </dl>
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="w-0 flex-1 flex">
-                            <a [routerLink]="[calendar.id]" routerLinkActive="active"
-                                class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
-                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+<div class="h-screen overflow-y-auto bg-gray-50">
+    <div class="flex justify-center py-16">
+        <div class="bg-white shadow overflow-hidden sm:rounded-md w-9/12">
+            <ul class="divide-y divide-gray-200">
+                <li *ngFor="let calendar of calendars$ | async">
+                    <a href="#" [routerLink]="[calendar.id]" routerLinkActive="active" class="block hover:bg-gray-50">
+                        <div class="px-4 py-4 flex items-center sm:px-6">
+                            <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+                                <div>
+                                    <div class="flex">
+                                        <div class="flex items-center text-sm text-gray-500">
+                                            <input id="comments" name="comments" type="checkbox"
+                                                class="flex-shrink-0 mr-2.5 focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                            <p>
+                                                <span class="flex text-sm font-medium text-indigo-600 truncate">
+                                                    {{ calendar.name }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ml-5 flex-shrink-0">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
                                 </svg>
-                                <span class="ml-3">Edit Configuration</span>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <div class="fixed">
+                    </a>
+                </li>
+            </ul>
         </div>
+        <!-- <div>
+            <div class="fixed">
+            </div>
+        </div> -->
     </div>
 </div>
