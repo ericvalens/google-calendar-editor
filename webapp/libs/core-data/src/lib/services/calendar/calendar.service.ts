@@ -23,6 +23,10 @@ export class CalendarService {
     return this.http.put(this.getUrlWithId(calendar.id), calendar);
   }
 
+  updateAll(calendars: Calendar[]) {
+    return this.http.put(this.getUrl(), calendars);
+  }
+
   private getUrl() {
     return `${environment.apiEndpoint}${this.model}`;
   }

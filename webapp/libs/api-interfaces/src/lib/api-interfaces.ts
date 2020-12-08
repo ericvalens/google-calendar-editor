@@ -5,6 +5,5 @@ export interface Message {
 export interface Calendar {
   id: string;
   name: string;
-  description: string;
-  nextEvent: Date;
+  monitor: boolean;
 }

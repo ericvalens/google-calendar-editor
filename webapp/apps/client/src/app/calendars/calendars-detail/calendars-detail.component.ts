@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 const emptyCalendar: Calendar = {
   id: null,
   name: '',
-  description: '',
-  nextEvent: null,
+  monitor: false,
 };
 
 @Component({

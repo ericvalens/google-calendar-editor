@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Calendar } from '@webapp/api-interfaces';
 import { CalendarService } from '@webapp/core-data';
-import { Observable } from 'rxjs';
 
 const emptyCalendar: Calendar = {
   id: null,
   name: '',
-  description: '',
-  nextEvent: null,
+  monitor: false,
 };
 
 @Component({
@@ -16,7 +14,8 @@ const emptyCalendar: Calendar = {
   styleUrls: ['./calendars-list.component.scss'],
 })
 export class CalendarsListComponent implements OnInit {
-  calendars$: Observable<Calendar[]>;
+  calendars: Calendar[];
+  selectAllCalendars: boolean;
 
   constructor(private calendarService: CalendarService) {}
 
@@ -28,9 +27,18 @@ export class CalendarsListComponent implements OnInit {
     this.loadCalendars();
   }
 
-  resetForm() {}
-
   loadCalendars() {
-    this.calendars$ = this.calendarService.all();
+    this.calendarService
+      .all()
+      .subscribe((calendars) => (this.calendars = calendars));
+  }
+
+  onSelectAllCalendars(monitor: boolean) {
+    this.selectAllCalendars = monitor;
+    this.calendars.forEach((c) => (c.monitor = monitor));
+  }
+
+  updateAllCalendarSettings() {
+    this.calendarService.updateAll(this.calendars);
   }
 }

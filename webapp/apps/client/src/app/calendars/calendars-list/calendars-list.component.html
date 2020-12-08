@@ -1,36 +1,62 @@
 <div class="h-screen overflow-y-auto bg-gray-50">
-    <div class="flex justify-center py-16">
-        <div class="bg-white shadow overflow-hidden sm:rounded-md w-9/12">
+    <div class="flex flex-col justify-center py-16">
+        <div class="mx-auto relative flex items-start w-9/12">
+            <div class="pb-4 text-lg font-medium text-gray-900">
+                Calendars
+            </div>
+            <div class="relative flex justify-end items-center pb-4 w-full">
+                <div class="flex items-center">
+                    <input #selectAllCalendarsCheckBox id="selectAllCalendarsCheckBox" type="checkbox"
+                        [checked]="selectAllCalendars"
+                        (change)="onSelectAllCalendars(selectAllCalendarsCheckBox.checked)"
+                        class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="comments" class="font-medium text-gray-700">Select All</label>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto bg-white shadow overflow-hidden sm:rounded-md w-9/12">
             <ul class="divide-y divide-gray-200">
-                <li *ngFor="let calendar of calendars$ | async">
-                    <a href="#" [routerLink]="[calendar.id]" routerLinkActive="active" class="block hover:bg-gray-50">
-                        <div class="px-4 py-4 flex items-center sm:px-6">
-                            <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
-                                <div>
-                                    <div class="flex">
-                                        <div class="flex items-center text-sm text-gray-500">
-                                            <input id="comments" name="comments" type="checkbox"
-                                                class="flex-shrink-0 mr-2.5 focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            <p>
-                                                <span class="flex text-sm font-medium text-indigo-600 truncate">
-                                                    {{ calendar.name }}</span>
-                                            </p>
+                <li *ngFor="let calendar of calendars">
+                    <div class="inline-flex w-full">
+                        <div class="flex items-center pl-6 hover:bg-gray-50">
+                            <input [(ngModel)]="calendar.monitor" type="checkbox"
+                                class="flex-shrink-0 mr-2.5 focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                        </div>
+                        <a [routerLink]="[calendar.id]" routerLinkActive="active" class="hover:bg-gray-50 w-full">
+                            <div class="px-4 py-4 flex items-center sm:pl-1 sm:pr-4">
+                                <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+                                    <div>
+                                        <div class="flex">
+                                            <div class="flex items-center text-sm text-gray-500">
+                                                <p>
+                                                    <span class="flex text-sm font-medium text-indigo-600 truncate">
+                                                        {{ calendar.name }}</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="ml-5 flex-shrink-0">
+                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="ml-5 flex-shrink-0">
-                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </li>
             </ul>
+        </div>
+        <div class="mx-auto flex flex-row-reverse pt-4 w-9/12">
+            <button type="submit"
+                class="inline-flex justify-center py-1 px-4 border border-transparent shadow-sm text-base font-small rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Update
+            </button>
         </div>
         <!-- <div>
             <div class="fixed">
