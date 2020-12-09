@@ -1,18 +1,16 @@
-package kmb.calendar;
+package dev.kassie.calendar;
 
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.CalendarList;
 import com.google.api.services.calendar.model.CalendarListEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -22,66 +20,38 @@ import java.util.stream.Collectors;
  * Responsible for selecting the calendars which will be monitored by the application.
  *
  * @author kbowman
- * @since 1.0.0
+ * @since 0.0.1
  */
-public class CalendarSelector
+@Component
+public class CalendarManager
 {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private static final String DEFAULT_CALENDAR_FILE_NAME = "calendarNames.csv";
-    private final List<CalendarListEntry> calendars;
+    private final List<CalendarListEntry> selectedCalendars;
+    private final Calendar calendarClient;
 
     /**
      * Constructor.
      *
-     * @param calendarClient The client for accessing the Calendar API
-     * @param args           The command line args for the application
+     * @param calendarProperties The application properties
+     * @param calendarClient     Client for interacting with the Google Calendar API
      */
-    public CalendarSelector(Calendar calendarClient, String[] args)
+    @Autowired
+    public CalendarManager(CalendarProperties calendarProperties, Calendar calendarClient)
     {
-        // TODO: Handle command line args to allow the user to specify a file name for the calendar names
-        //  If the args are unexpected, print out info to let the user name what is expected.
-        URL calendarFileUrl = getClass().getClassLoader().getResource(DEFAULT_CALENDAR_FILE_NAME);
+        this.calendarClient = calendarClient;
+        List<String> calendarNames = calendarProperties.getCalendarNames();
 
-        List<String> calendarNames = parseFileForCalendarNames(calendarFileUrl.getFile());
+        List<CalendarListEntry> availableCalendars = getAvailableCalendars();
 
-        List<CalendarListEntry> availableCalendars = queryForCalendars(calendarClient);
-
-        calendars = getCalendarsForNames(calendarNames, availableCalendars);
-    }
-
-    /**
-     * Parses the calendar file for the list of calendar names.
-     *
-     * @param calendarFileName The name of the file containing a comma-separated list of calendar names
-     * @return The list of calendar names or an empty list if an error occurred.
-     */
-    private List<String> parseFileForCalendarNames(String calendarFileName)
-    {
-        List<String> calendarNames = new ArrayList<>();
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(calendarFileName)))
-        {
-            String line;
-            while ((line = bufferedReader.readLine()) != null)
-            {
-                String[] values = line.split(",");
-                Arrays.stream(values).map(String::trim).forEach(calendarNames::add);
-            }
-        } catch (IOException e)
-        {
-            logger.error("Error reading from calendar file {}", calendarFileName, e);
-        }
-
-        return calendarNames;
+        selectedCalendars = getCalendarsForNames(calendarNames, availableCalendars);
     }
 
     /**
      * Queries the API for the available calendars.
      *
-     * @param calendarClient The client for accessing the Calendar API
      * @return The list of available calendars or an empty list if an error occurred.
      */
-    private List<CalendarListEntry> queryForCalendars(Calendar calendarClient)
+    public List<CalendarListEntry> getAvailableCalendars()
     {
         try
         {
@@ -130,6 +100,6 @@ public class CalendarSelector
      */
     public List<CalendarListEntry> getSelectedCalendars()
     {
-        return Collections.unmodifiableList(calendars);
+        return Collections.unmodifiableList(selectedCalendars);
     }
 }
