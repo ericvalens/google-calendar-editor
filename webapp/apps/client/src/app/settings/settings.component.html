@@ -10,10 +10,10 @@
                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                     <div class="sm:col-span-5">
                         <label class="block text-sm font-medium text-gray-700">
-                            Search Text
+                            Original Text
                         </label>
                         <div class="mt-1">
-                            <input id="searchText" type="text"
+                            <input [(ngModel)]="configuration.originalText" name="originalText" id="originalText" type="text"
                                 placeholder="Registration will open 72 hours before class start time. Class size is "
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
@@ -23,7 +23,7 @@
                             Replace Text
                         </label>
                         <div class="mt-1">
-                            <input type="text" placeholder="Spots:"
+                            <input [(ngModel)]="configuration.replacementText" name="replacementText" id="replacementText" type="text" placeholder="Spots:"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
@@ -32,16 +32,15 @@
                             How far out should events be updated to open them for registration?
                         </label>
                         <div class="mt-1">
-                            <input type="text" placeholder="72"
+                            <input [(ngModel)]="configuration.updatePeriodValue" name="updatePeriodValue" id="updatePeriodValue" type="text" placeholder="72"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-2">
                         <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
-                        <select id="country"
+                        <select [(ngModel)]="configuration.updatePeriodUnit" name="updatePeriodUnit" id="updatePeriodUnit"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>Minute(s)</option>
-                            <option>Hour(s)</option>
+                            <option *ngFor="let unit of units">{{ unit }}</option>
                         </select>
                     </div>
                     <div class="sm:col-span-3">
@@ -49,16 +48,15 @@
                             How often should we update calendar?
                         </label>
                         <div class="mt-1">
-                            <input type="text" placeholder="1"
+                            <input [(ngModel)]="configuration.queryPeriodValue" name="queryPeriodValue" id="queryPeriodValue" type="text" placeholder="1"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-2">
                         <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
-                        <select id="country"
+                        <select [(ngModel)]="configuration.queryPeriodUnit" name="queryPeriodUnit" id="queryPeriodUnit"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>Minute(s)</option>
-                            <option>Hour(s)</option>
+                            <option *ngFor="let unit of units">{{ unit }}</option>
                         </select>
                     </div>
                 </div>
@@ -66,11 +64,7 @@
         </div>
         <div class="pt-5">
             <div class="flex justify-end">
-                <button type="button"
-                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Cancel
-                </button>
-                <button type="submit"
+                <button (click)="saveConfiguration()" type="submit"
                     class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Save
                 </button>

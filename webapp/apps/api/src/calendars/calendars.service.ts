@@ -1,5 +1,10 @@
 import { Calendar } from '@webapp/api-interfaces';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpService } from '@nestjs/common';
+import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const API_ENDPOINT = 'http://localhost:8080';
 
 @Injectable()
 export class CalendarsService {
@@ -66,8 +71,12 @@ export class CalendarsService {
     },
   ];
 
-  findAll() {
-    return this.mockCalendars;
+  constructor(private httpService: HttpService) {}
+
+  findAll(): Observable<AxiosResponse<Calendar[]>> {
+    return this.httpService
+      .get(`${API_ENDPOINT}/calendars/available`)
+      .pipe(map((response) => response.data));
   }
 
   findOne(id: string) {

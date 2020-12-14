@@ -7,3 +7,12 @@ export interface Calendar {
   name: string;
   monitor: boolean;
 }
+
+export interface Configuration {
+  originalText: string;
+  replacementText: string;
+  updatePeriodValue: number;
+  updatePeriodUnit: string;
+  queryPeriodValue: number;
+  queryPeriodUnit: string;
+}

@@ -16,6 +16,7 @@ const emptyCalendar: Calendar = {
   styleUrls: ['./calendars-detail.component.scss'],
 })
 export class CalendarsDetailComponent implements OnInit, OnDestroy {
+  units: string[] = new Array('MILLISECONDS', 'SECONDS', 'MINUTES', 'HOURS');
   calendar: Calendar;
   id: string;
   sub;
