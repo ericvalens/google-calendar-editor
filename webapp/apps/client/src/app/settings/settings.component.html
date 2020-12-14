@@ -1,4 +1,41 @@
 <div class="h-screen overflow-y-auto flex justify-center py-16 bg-gray-50">
+    <div [ngClass]="updated ? 'block transform ease-out duration-300 transition' : 'hidden'"
+        class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
+        <div
+            class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+            <div class="p-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <svg class="h-6 w-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-3 w-0 flex-1 pt-0.5">
+                        <p class="text-sm font-medium text-gray-900">
+                            Successfully saved!
+                        </p>
+                        <p class="mt-1 text-sm text-gray-500">
+                            Global configuration settings updated
+                        </p>
+                    </div>
+                    <div class="ml-4 flex-shrink-0 flex">
+                        <button (click)="closeNotification()"
+                            class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <span class="sr-only">Close</span>
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <form class="space-y-8 divide-y divide-gray-200">
         <div class="space-y-8 divide-y divide-gray-200">
             <div>
@@ -13,7 +50,8 @@
                             Original Text
                         </label>
                         <div class="mt-1">
-                            <input [(ngModel)]="configuration.originalText" name="originalText" id="originalText" type="text"
+                            <input [(ngModel)]="configuration.originalText" name="originalText" id="originalText"
+                                type="text"
                                 placeholder="Registration will open 72 hours before class start time. Class size is "
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
@@ -23,7 +61,8 @@
                             Replace Text
                         </label>
                         <div class="mt-1">
-                            <input [(ngModel)]="configuration.replacementText" name="replacementText" id="replacementText" type="text" placeholder="Spots:"
+                            <input [(ngModel)]="configuration.replacementText" name="replacementText"
+                                id="replacementText" type="text" placeholder="Spots:"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
@@ -32,13 +71,15 @@
                             How far out should events be updated to open them for registration?
                         </label>
                         <div class="mt-1">
-                            <input [(ngModel)]="configuration.updatePeriodValue" name="updatePeriodValue" id="updatePeriodValue" type="text" placeholder="72"
+                            <input [(ngModel)]="configuration.updatePeriodValue" name="updatePeriodValue"
+                                id="updatePeriodValue" type="text" placeholder="72"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-2">
                         <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
-                        <select [(ngModel)]="configuration.updatePeriodUnit" name="updatePeriodUnit" id="updatePeriodUnit"
+                        <select [(ngModel)]="configuration.updatePeriodUnit" name="updatePeriodUnit"
+                            id="updatePeriodUnit"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <option *ngFor="let unit of units">{{ unit }}</option>
                         </select>
@@ -48,7 +89,8 @@
                             How often should we update calendar?
                         </label>
                         <div class="mt-1">
-                            <input [(ngModel)]="configuration.queryPeriodValue" name="queryPeriodValue" id="queryPeriodValue" type="text" placeholder="1"
+                            <input [(ngModel)]="configuration.queryPeriodValue" name="queryPeriodValue"
+                                id="queryPeriodValue" type="text" placeholder="1"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>

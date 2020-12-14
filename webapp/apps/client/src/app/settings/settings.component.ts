@@ -19,6 +19,7 @@ const emptyConfiguration: Configuration = {
 export class SettingsComponent implements OnInit {
   units: string[] = new Array('MILLISECONDS', 'SECONDS', 'MINUTES', 'HOURS');
   configuration: Configuration;
+  updated: boolean = false;
 
   constructor(private configurationService: ConfigurationService) {}
 
@@ -27,6 +28,7 @@ export class SettingsComponent implements OnInit {
   }
 
   reset() {
+    this.updated = false;
     this.configuration = emptyConfiguration;
     this.loadConfiguration();
   }
@@ -38,6 +40,17 @@ export class SettingsComponent implements OnInit {
   }
 
   saveConfiguration() {
-    this.configurationService.update(this.configuration);
+    this.configurationService.update(this.configuration).subscribe(
+      () => {},
+      () => {},
+      () => {
+        this.updated = true;
+        console.log(this.updated);
+      }
+    );
+  }
+
+  closeNotification() {
+    this.updated = false;
   }
 }

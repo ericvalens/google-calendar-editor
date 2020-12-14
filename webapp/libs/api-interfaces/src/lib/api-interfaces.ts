@@ -16,3 +16,7 @@ export interface Configuration {
   queryPeriodValue: number;
   queryPeriodUnit: string;
 }
+
+export interface Log {
+  info: string;
+}
