@@ -1,8 +1,8 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
 import { AppModule } from './app/app.module';
+import { config } from 'dotenv';
 
 const configureSwagger = (app) => {
   const options = new DocumentBuilder()
@@ -15,6 +15,7 @@ const configureSwagger = (app) => {
 };
 
 async function bootstrap() {
+  config();
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
