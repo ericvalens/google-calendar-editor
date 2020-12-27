@@ -1,1 +1,7 @@
-export { Message, Calendar, Configuration, Log } from './lib/api-interfaces';
+export {
+  Message,
+  Calendar,
+  Configuration,
+  Log,
+  User,
+} from './lib/api-interfaces';

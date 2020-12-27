@@ -87,6 +87,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+webapp/mongodb/db_*.txt
 
 # System Files
 .DS_Store

@@ -20,3 +20,8 @@ export interface Configuration {
 export interface Log {
   info: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+}
