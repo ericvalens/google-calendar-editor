@@ -8,23 +8,23 @@ x-healthcheck-defaults: &default-healthchecks
 x-nx-volumes: &nx-volumes
   - ./:/usr/app
   - /usr/app/node_modules
-  - ./:/data/db
+  # - ./:/data/db
 
 services:
-  database:
-    build:
-      context: .
-      dockerfile: Dockerfile.db
-      args:
-        PORT: 27017
-        MONGO_INITDB_ROOT_USERNAME: /run/secrets/db_root_username
-        MONGO_INITDB_ROOT_PASSWORD: /run/secrets/db_root_password
-    volumes: *nx-volumes
-    ports:
-      - '27017:27017'
-    secrets:
-      - db_root_username
-      - db_root_password
+  # database:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.db
+  #     args:
+  #       PORT: 27017
+  #       MONGO_INITDB_ROOT_USERNAME: /run/secrets/db_root_username
+  #       MONGO_INITDB_ROOT_PASSWORD: /run/secrets/db_root_password
+  #   volumes: *nx-volumes
+  #   ports:
+  #     - '27017:27017'
+  #   secrets:
+  #     - db_root_username
+  #     - db_root_password
 
   api:
     build:
@@ -43,6 +43,7 @@ services:
   app:
     build:
       context: .
+      dockerfile: Dockerfile.api
       args:
         PORT: 4200
     command: yarn serve:web
