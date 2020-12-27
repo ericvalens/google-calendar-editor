@@ -12,19 +12,11 @@ x-nx-volumes: &nx-volumes
   - ./mongodb/data:/data/db
 
 services:
-  database:
+  db:
     image: mongo:4.4.1
-    environment:
-      - MONGO_INITDB_DATABASE=/run/secrets/db_name
-      - MONGO_INITDB_ROOT_USERNAME=/run/secrets/db_root_username
-      - MONGO_INITDB_ROOT_PASSWORD=/run/secrets/db_root_password
     volumes: *nx-volumes
     ports:
       - '27017-27019:27017-27019'
-    secrets:
-      - db_name
-      - db_root_username
-      - db_root_password
 
   api:
     build:
@@ -53,11 +45,3 @@ services:
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:4200']
       <<: *default-healthchecks
-
-secrets:
-  db_name:
-    file: mongodb/db_name.txt
-  db_root_username:
-    file: mongodb/db_root_username.txt
-  db_root_password:
-    file: mongodb/db_root_password.txt

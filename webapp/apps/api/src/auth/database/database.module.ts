@@ -3,8 +3,7 @@ import { MongoClient, Db, Logger } from 'mongodb';
 
 const LOGGER_LEVEL = 'debug';
 const DB_CONNECTION = 'DATABASE_CONNECTION';
-const DB_CONNECTION_STRING =
-  process.env.MONGODB_CONNECTION_STRING || 'mongodb://127.0.0.1';
+const DB_CONNECTION_STRING = 'mongodb://db:27017';
 const DB_NAME = 'gce';
 const DB_USERS_COLLECTION = 'users';
 
