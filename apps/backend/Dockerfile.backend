@@ -1,5 +1,17 @@
-FROM adoptopenjdk/openjdk11:alpine AS build
-VOLUME /tmp
 ARG JAR_FILE=build/libs/*.jar
+ARG PORT=8080
+
+FROM adoptopenjdk/openjdk11:alpine AS build
+
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
+
+EXPOSE ${PORT}
+
+VOLUME /tmp
+
 COPY ${JAR_FILE} app.jar
+
+ENV PORT=${PORT}
+
 ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar ${0} ${@}"]

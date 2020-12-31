@@ -41,20 +41,20 @@ ext {
     snippetsDir = file('build/generated-snippets')
 }
 
-//test {
-//    useJUnitPlatform()
-//    outputs.dir snippetsDir
-//}
+test {
+    useJUnitPlatform()
+    outputs.dir snippetsDir
+}
 
-//asciidoctor {
-//    inputs.dir snippetsDir
-//    dependsOn test
-//}
+asciidoctor {
+    inputs.dir snippetsDir
+    dependsOn test
+}
 
 // package the generated documentation in project’s jar file
-//bootJar {
-//    dependsOn asciidoctor
-//    from ("${asciidoctor.outputDir}/html5") {
-//        into 'static/docs'
-//    }
-//}
+bootJar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
+}
