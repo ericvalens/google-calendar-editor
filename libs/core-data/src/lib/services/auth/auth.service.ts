@@ -26,6 +26,10 @@ export class AuthService {
     return localStorage.getItem("token") ? true : false;
   }
 
+  removeToken() {
+    localStorage.removeItem("token");
+  }
+
   private getUrl() {
     return `${environment.apiEndpoint}${this.model}`;
   }

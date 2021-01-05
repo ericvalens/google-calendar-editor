@@ -22,6 +22,9 @@ export interface Log {
 }
 
 export interface User {
-  name: string;
+  id: string;
   email: string;
+  name: string;
+  picture: string;
+  accessToken: string;
 }

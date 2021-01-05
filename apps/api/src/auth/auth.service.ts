@@ -1,10 +1,6 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import { sign } from "jsonwebtoken";
 
-export enum Provider {
-  GOOGLE = "google",
-}
-
 const API_ENDPOINT = "http://localhost:4200";
 
 @Injectable()
