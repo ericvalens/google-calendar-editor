@@ -1,14 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, Inject } from '@angular/core';
-import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+import { HttpClient } from "@angular/common/http";
+import { Injectable, Inject } from "@angular/core";
+import { environment } from "@env/environment";
+import { DOCUMENT } from "@angular/common";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
-  model = 'auth';
+  model = "auth";
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -16,11 +15,15 @@ export class AuthService {
   ) {}
 
   googleSignIn() {
-    this.document.location.href = this.getUrl() + '/google/signin';
+    this.document.location.href = this.getUrl() + "/google/signin";
   }
 
-  requestGoogleRedirectUri(): Observable<any> {
-    return this.http.get(this.getUrl() + '/google/redirect');
+  createToken(token: string) {
+    localStorage.setItem("token", token);
+  }
+
+  getToken() {
+    return localStorage.getItem("token") ? true : false;
   }
 
   private getUrl() {

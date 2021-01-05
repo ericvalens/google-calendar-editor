@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@webapp/api-interfaces';
+import { Component } from "@angular/core";
+import { AuthService } from "@webapp/core-data";
 
 @Component({
-  selector: 'webapp-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "webapp-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  constructor(private readonly authService: AuthService) {}
+
+  isUserLoggedIn() {
+    return this.authService.getToken();
+  }
 }

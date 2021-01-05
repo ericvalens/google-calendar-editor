@@ -1,22 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { CalendarsComponent } from './calendars.component';
-import { CalendarsListComponent } from './calendars-list/calendars-list.component';
-import { CalendarsDetailComponent } from './calendars-detail/calendars-detail.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Routes, RouterModule } from "@angular/router";
+import { CalendarsComponent } from "./calendars.component";
+import { CalendarsListComponent } from "./calendars-list/calendars-list.component";
+import { CalendarsDetailComponent } from "./calendars-detail/calendars-detail.component";
+import { AuthGuardService } from "../auth/auth-guard.service";
 
 const routes: Routes = [
   {
-    path: 'calendar',
+    path: "calendar",
     component: CalendarsComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
-        path: '',
+        path: "",
         component: CalendarsListComponent,
-        pathMatch: 'full',
+        pathMatch: "full",
       },
       {
-        path: ':id',
+        path: ":id",
         component: CalendarsDetailComponent,
       },
     ],

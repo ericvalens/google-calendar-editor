@@ -19,19 +19,19 @@ services:
       - 27017-27019:27017-27019
     restart: always
 
-  backend:
-    image: ericvalens/gce:latest
-    build:
-      context: .
-      args:
-        PORT: 8080
-        JAVA_OPTS: "-Ddebug -Xmx128m"
-    volumes: *nx-volumes
-    ports:
-      - 8080:8080
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
-      <<: *default-healthchecks
+  # backend:
+  #   image: ericvalens/gce:latest
+  #   build:
+  #     context: .
+  #     args:
+  #       PORT: 8080
+  #       JAVA_OPTS: "-Ddebug -Xmx128m"
+  #   volumes: *nx-volumes
+  #   ports:
+  #     - 8080:8080
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:8080"]
+  #     <<: *default-healthchecks
 
   api:
     build:

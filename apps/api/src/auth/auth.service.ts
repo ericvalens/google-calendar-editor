@@ -1,11 +1,11 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { sign } from 'jsonwebtoken';
+import { Injectable, InternalServerErrorException } from "@nestjs/common";
+import { sign } from "jsonwebtoken";
 
 export enum Provider {
-  GOOGLE = 'google',
+  GOOGLE = "google",
 }
 
-const API_ENDPOINT = 'http://localhost:4200';
+const API_ENDPOINT = "http://localhost:4200";
 
 @Injectable()
 export class AuthService {
@@ -13,22 +13,20 @@ export class AuthService {
 
   private readonly JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
-  googleLogin(req, res) {
+  googleSignIn(req, res) {
     if (!req.user) {
-      return res.redirect(`${API_ENDPOINT}/failure`);
+      return res.redirect(`${API_ENDPOINT}/login/failure`);
     } else {
-      return res.redirect(`${API_ENDPOINT}/calendar/` + req.user.jwt);
+      return res.redirect(
+        `${API_ENDPOINT}/login/` + "?token=" + req.user.accessToken
+      );
     }
   }
 
-  async validateOAuthLogin(
-    thirdPartyId: string,
-    provider: Provider
-  ): Promise<string> {
+  async validateGoogleLogin(userId: string): Promise<string> {
     try {
       const payload = {
-        thirdPartyId,
-        provider,
+        userId: userId,
       };
 
       const jwt: string = sign(payload, this.JWT_SECRET_KEY, {
@@ -36,7 +34,10 @@ export class AuthService {
       });
       return jwt;
     } catch (err) {
-      throw new InternalServerErrorException('validateOAuthLogin', err.message);
+      throw new InternalServerErrorException(
+        "validateGoogleLogin",
+        err.message
+      );
     }
   }
 }

@@ -1,20 +1,20 @@
-import { Strategy, VerifyCallback } from 'passport-google-oauth20';
-import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthService, Provider } from '../auth.service';
-import { UsersService } from '../users/users.service';
-import { User } from '@webapp/api-interfaces';
+import { Strategy, VerifyCallback } from "passport-google-oauth20";
+import { PassportStrategy } from "@nestjs/passport";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { AuthService, Provider } from "../auth.service";
+import { UsersService } from "../users/users.service";
+import { User } from "@webapp/api-interfaces";
 
-const API_ENDPOINT = 'http://localhost:3333';
+const API_ENDPOINT = "http://localhost:3333";
 
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
+export class GoogleStrategy extends PassportStrategy(Strategy, "google") {
   constructor(private readonly usersService: UsersService) {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: `${API_ENDPOINT}/api/auth/google/redirect`,
-      scope: ['email', 'profile'],
+      scope: ["email", "profile"],
     });
   }
 
@@ -32,19 +32,19 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       accessToken,
     };
 
-    this.usersService
-      .findOne(user.email)
-      .then((u) => {
-        if (!u) {
-          this.usersService.create({ name: user.name, email: user.email });
-        } else {
-          return done(null, u);
-        }
-      })
-      .catch((err) => {
-        return done(null, false, { message: err });
-      });
+    // this.usersService
+    //   .findOne(user.email)
+    //   .then((u) => {
+    //     if (!u) {
+    //       this.usersService.create({ name: user.name, email: user.email });
+    //     } else {
+    //       return done(null, user);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     return done(null, false, { message: err });
+    //   });
 
-    done(null, user);
+    return done(null, user);
   }
 }
