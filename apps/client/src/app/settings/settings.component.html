@@ -1,4 +1,4 @@
-<div class="h-screen overflow-y-auto flex justify-center py-16 bg-gray-50">
+<div class="h-screen overflow-y-auto flex justify-center sm:px-8 py-16 bg-gray-50">
     <div [ngClass]="updated ? 'block transform ease-out duration-300 transition' : 'hidden'"
         class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
         <div
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <form class="space-y-8 divide-y divide-gray-200">
+    <form class="w-full space-y-8 divide-y divide-gray-200 lg:px-24">
         <div class="space-y-8 divide-y divide-gray-200">
             <div>
                 <div>
@@ -44,7 +44,7 @@
                         Global Configuration
                     </h3>
                 </div>
-                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-5">
                     <div class="sm:col-span-5">
                         <label class="block text-sm font-medium text-gray-700">
                             Original Text
@@ -66,41 +66,47 @@
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
                     </div>
-                    <div class="sm:col-span-3">
-                        <label class="block text-sm font-medium text-gray-700">
-                            How far out should events be updated to open them for registration?
-                        </label>
-                        <div class="mt-1">
-                            <input [(ngModel)]="configuration.updatePeriodValue" name="updatePeriodValue"
-                                id="updatePeriodValue" type="text" placeholder="72"
-                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+
+                    <div class="sm:col-span-5">
+                        <div class="grid gap-y-2 gap-x-4">
+                            <label class="sm:col-span-5 block text-sm font-medium text-gray-700">
+                                How far out should events be updated to open them for registration?
+                            </label>
+                            <div class="sm:col-span-3">
+                                <input [(ngModel)]="configuration.updatePeriodValue" name="updatePeriodValue"
+                                    id="updatePeriodValue" type="text" placeholder="72"
+                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <select [(ngModel)]="configuration.updatePeriodUnit" name="updatePeriodUnit"
+                                    id="updatePeriodUnit"
+                                    class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option *ngFor="let unit of units">{{ unit }}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
-                        <select [(ngModel)]="configuration.updatePeriodUnit" name="updatePeriodUnit"
-                            id="updatePeriodUnit"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option *ngFor="let unit of units">{{ unit }}</option>
-                        </select>
-                    </div>
-                    <div class="sm:col-span-3">
-                        <label class="block text-sm font-medium text-gray-700">
-                            How often should we update calendar?
-                        </label>
-                        <div class="mt-1">
-                            <input [(ngModel)]="configuration.queryPeriodValue" name="queryPeriodValue"
-                                id="queryPeriodValue" type="text" placeholder="1"
-                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+
+                    <div class="sm:col-span-5">
+                        <div class="grid gap-y-2 gap-x-4">
+                            <label class="col-span-5 block text-sm font-medium text-gray-700">
+                                How often should we update calendar?
+                            </label>
+                            <div class="sm:col-span-3">
+                                <input [(ngModel)]="configuration.queryPeriodValue" name="queryPeriodValue"
+                                    id="queryPeriodValue" type="text" placeholder="1"
+                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <select [(ngModel)]="configuration.queryPeriodUnit" name="queryPeriodUnit"
+                                    id="queryPeriodUnit"
+                                    class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option *ngFor="let unit of units">{{ unit }}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-span-6 sm:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700">&nbsp;</label>
-                        <select [(ngModel)]="configuration.queryPeriodUnit" name="queryPeriodUnit" id="queryPeriodUnit"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option *ngFor="let unit of units">{{ unit }}</option>
-                        </select>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -113,8 +119,8 @@
             </div>
         </div>
     </form>
-    <div>
+    <!-- <div>
         <div class="fixed">
         </div>
-    </div>
+    </div> -->
 </div>
